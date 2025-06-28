@@ -1,0 +1,184 @@
+{
+  "libros": [
+    {
+      "titulo": "La metamorfosis",
+      "autor": "Franz Kafka",
+      "descripcion": "Gregor Samsa se despierta convertido en un insecto gigantesco; una reflexión angustiosa sobre la alienación.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Franz_Kafka_Die_Verwandlung_1916_Orig.-Pappband.jpg",
+      "cantidad": 5,
+      "precio": 120,
+      "genero": "Existencial"
+    },
+    {
+      "titulo": "No tengo boca y debo gritar",
+      "autor": "Harlan Ellison",
+      "descripcion": "Cuento distópico donde una IA maligna tortura a los últimos cinco humanos tras un holocausto nuclear.",
+      "imagen": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714589896i/26371909.jpg",
+      "cantidad": 4,
+      "precio": 140,
+      "genero": "Ciencia ficción"
+    },
+    {
+      "titulo": "Indigno de ser humano",
+      "autor": "Osamu Dazai",
+      "descripcion": "Autobiografía ficcionada sobre un hombre que se siente incapaz de existir como parte de la humanidad.",
+      "imagen": "https://cdn.zendalibros.com/wp-content/uploads/2024/02/indigno.jpg",
+      "cantidad": 3,
+      "precio": 130,
+      "genero": "Existencial"
+    },
+    {
+      "titulo": "El extraño caso del Dr. Jekyll y Mr. Hyde",
+      "autor": "Robert Louis Stevenson",
+      "descripcion": "Dualidad del bien y mal dentro del ser humano manifestada a través de una poción.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/5/57/Dr_Jekyll_and_Mr_Hyde_poster.png",
+      "cantidad": 6,
+      "precio": 110,
+      "genero": "Ficción gótica"
+    },
+    {
+      "titulo": "El retrato de Dorian Gray",
+      "autor": "Oscar Wilde",
+      "descripcion": "Un retrato envejece por él; Dorian mantiene su juventud mientras su alma se corrompe.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Houghton_HEW_12.10.15_-_The_Picture_of_Dorian_Gray%2C_1891_%28cover%29.jpg",
+      "cantidad": 4,
+      "precio": 115,
+      "genero": "Ficción gótica"
+    },
+    {
+      "titulo": "1984",
+      "autor": "George Orwell",
+      "descripcion": "Sociedad totalitaria bajo vigilancia extrema del Gran Hermano.",
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs97uez9UmWRAiX1j5uk4xVfAPV48KhQUZSw&s",
+      "cantidad": 7,
+      "precio": 150,
+      "genero": "Distopía"
+    },
+    {
+      "titulo": "Un mundo feliz",
+      "autor": "Aldous Huxley",
+      "descripcion": "Utopía tecnológica donde el control emocional se mantiene por drogas y manipulación genética.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Bnwr-1.jpg",
+      "cantidad": 6,
+      "precio": 145,
+      "genero": "Distopía"
+    },
+    {
+      "titulo": "La carretera",
+      "autor": "Cormac McCarthy",
+      "descripcion": "Padre e hijo recorren un paisaje postapocalíptico devastado y desolado.",
+      "imagen": "https://m.media-amazon.com/images/I/815SHtVWWmL.jpg",
+      "cantidad": 5,
+      "precio": 160,
+      "genero": "Postapocalíptico"
+    },
+    {
+      "titulo": "Ensayo sobre la ceguera",
+      "autor": "José Saramago",
+      "descripcion": "Una epidemia de ceguera ataca a la sociedad, revelando su fragilidad y la brutalidad humana.",
+      "imagen": "https://m.media-amazon.com/images/I/717ZqBXBF9L.jpg",
+      "cantidad": 8,
+      "precio": 155,
+      "genero": "Filosófico"
+    },
+    {
+      "titulo": "Fahrenheit 451",
+      "autor": "Ray Bradbury",
+      "descripcion": "En un mundo que prohíbe los libros, los ‘bomberos’ queman todo texto impreso.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/en/d/db/Fahrenheit_451_1st_ed_cover.jpg",
+      "cantidad": 6,
+      "precio": 135,
+      "genero": "Distopía"
+    },
+    {
+      "titulo": "La peste",
+      "autor": "Albert Camus",
+      "descripcion": "Una ciudad queda en cuarentena por una plaga, explorando lo absurdo y la solidaridad.",
+      "imagen": "https://m.media-amazon.com/images/I/71BAqGA9zML._UF894,1000_QL80_.jpg",
+      "cantidad": 5,
+      "precio": 125,
+      "genero": "Filosófico"
+    },
+    {
+      "titulo": "Memorias del subsuelo",
+      "autor": "Fiódor Dostoyevski",
+      "descripcion": "Monólogo interior de un hombre amargado que reflexiona sobre su propia miseria moral.",
+      "imagen": "https://m.media-amazon.com/images/I/91XhE9qKhtL._UF894,1000_QL80_.jpg",
+      "cantidad": 4,
+      "precio": 130,
+      "genero": "Filosófico"
+    },
+    {
+      "titulo": "Hambre",
+      "autor": "Knut Hamsun",
+      "descripcion": "Novela psicológica sobre la degradación física y mental de un escritor hambriento.",
+      "imagen": "https://m.media-amazon.com/images/I/71JnGej7rbL._UF894,1000_QL80_.jpg",
+      "cantidad": 3,
+      "precio": 120,
+      "genero": "Psicológico"
+    },
+    {
+      "titulo": "La campana de cristal",
+      "autor": "Sylvia Plath",
+      "descripcion": "Observaciones sombrías sobre una joven que enfrenta la presión social y la depresión.",
+      "imagen": "https://www.penguinlibros.com/mx/1736167/la-campana-de-cristal.jpg",
+      "cantidad": 4,
+      "precio": 140,
+      "genero": "Autobiográfico"
+    },
+    {
+      "titulo": "Cadáver exquisito",
+      "autor": "Agustina Bazterrica",
+      "descripcion": "Distopía perturbadora sobre una pandemia que afecta el trato hacia los humanos.",
+      "imagen": "https://m.media-amazon.com/images/I/81GdvpmsH1L._UF894,1000_QL80_.jpg",
+      "cantidad": 5,
+      "precio": 150,
+      "genero": "Distopía"
+    },
+    {
+      "titulo": "Soy leyenda",
+      "autor": "Richard Matheson",
+      "descripcion": "Último humano en un mundo infestado de vampiros; combate y soledad extrema.",
+      "imagen": "https://m.media-amazon.com/images/I/81LSi0xkrwL._UF894,1000_QL80_.jpg",
+      "cantidad": 6,
+      "precio": 145,
+      "genero": "Horror"
+    },
+    {
+      "titulo": "El planeta de los simios",
+      "autor": "Pierre Boulle",
+      "descripcion": "Un hombre viaja al futuro y descubre una sociedad gobernada por simios.",
+      "imagen": "https://m.media-amazon.com/images/I/71BYkzFHTML._UF894,1000_QL80_.jpg",
+      "cantidad": 4,
+      "precio": 130,
+      "genero": "Ciencia ficción"
+    },
+    {
+      "titulo": "El enigma de la falla de Amigara",
+      "autor": "Junji Ito",
+      "descripcion": "Manga de terror breve: personas se sienten atraídas por siluetas humanas en una roca.",
+      "imagen": "https://revistakokoro.com/junji01.jpg",
+      "cantidad": 2,
+      "precio": 110,
+      "genero": "Terror"
+    },
+    {
+      "titulo": "El señor de la noche",
+      "autor": "Tanith Lee",
+      "descripcion": "Cuento de fantasía oscura con seres conscientes y atmósfera opresiva.",
+      "imagen": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1436454995i/17833731.jpg",
+      "cantidad": 3,
+      "precio": 125,
+      "genero": "Fantasía oscura"
+    },
+    {
+      "titulo": "Oryx y Crake",
+      "autor": "Margaret Atwood",
+      "descripcion": "Distopía biotecnológica donde un hombre recuerda el colapso de la humanidad.",
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLdJnx3qVSu_JBPqDtzIdSQxrOY8I2H_JPEQ&s",
+      "cantidad": 5,
+      "precio": 160,
+      "genero": "Distopía"
+    }
+  ]
+}
