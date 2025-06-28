@@ -1,10 +1,11 @@
 <template>
   <div
-    class="w-full min-h-screen bg-gray-300 dark:bg-gray-900 text-gray-900 dark:text-white flex flex-col md:flex-row"
+    class="w-full min-h-screen bg-gray-300 dark:bg-gray-900 text-gray-900 dark:text-white flex flex-col md:flex-row transition-colors duration-500"
     style="font-family: 'Gentium Book Plus', serif"
   >
     <!-- Área principal: listado y filtros -->
     <div class="flex-1 p-4">
+      <!-- Modificado: se quitó overflow-auto para usar scroll global -->
       <!-- Cabecera con conteo y botón de tema -->
       <div class="mb-6 flex items-center justify-between">
         <div>
@@ -15,7 +16,6 @@
             {{ readingList.length }} en la lista de lectura
           </p>
         </div>
-        <!-- Botón toggle modo oscuro/claro -->
         <button
           @click="toggleDark()"
           class="ml-4 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-md text-sm transition-colors duration-500"
@@ -24,9 +24,9 @@
         </button>
       </div>
 
-      <!-- Resumen comprimido de filtros: sticky con top custom -->
+      <!-- Resumen comprimido de filtros: sticky -->
       <div
-        class="mb-4 flex items-center justify-between bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-200 px-4 py-2 rounded cursor-pointer z-10 sticky top-0"
+        class="mb-4 flex items-center justify-between bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-200 px-4 py-2 rounded cursor-pointer sticky top-0 z-10"
         @click="toggleFiltersPanel"
       >
         <div class="flex flex-wrap gap-2 items-center">
@@ -64,11 +64,11 @@
         </div>
       </div>
 
-      <!-- Panel desplegable de filtros con animación fade-down -->
+      <!-- Panel de filtros: sticky debajo del resumen -->
       <transition name="fade-down">
         <div
           v-if="showFiltersPanel"
-          class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 bg-white dark:bg-gray-900 p-4 rounded"
+          class="sticky top-[4rem] z-10 grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 bg-white dark:bg-gray-900 p-4 rounded"
         >
           <!-- Tarjeta Range Slider de precio -->
           <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow p-4 w-full mx-auto">
@@ -122,7 +122,7 @@
             </button>
             <div
               v-if="genreDropdownOpen"
-              class="absolute z-20 mt-1 w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded shadow-lg max-h-48 overflow-auto"
+              class="absolute z-30 mt-1 w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded shadow-lg max-h-48 overflow-auto"
             >
               <ul class="py-1">
                 <li v-for="genre in genres" :key="genre">
@@ -161,7 +161,7 @@
         </div>
       </transition>
 
-      <!-- Grid responsivo de cards más pequeñas -->
+      <!-- Grid responsivo de cards -->
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3"
       >
@@ -170,7 +170,7 @@
           :key="book.titulo"
           class="group flex flex-col bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition border-2 border-transparent hover:border-teal-600"
         >
-          <!-- Imagen compacta con efecto de página sobresaliente en hover -->
+          <!-- Imagen con página descriptiva -->
           <div
             class="relative w-full"
             style="padding-top: 120%"
@@ -188,7 +188,7 @@
               <p class="text-xs">{{ book.descripcion }}</p>
             </div>
           </div>
-          <!-- Pie de la card toggle lectura -->
+          <!-- Pie de la card -->
           <div
             class="p-2 flex items-center justify-between bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 cursor-pointer"
             @click="toggleReadingList(book)"
@@ -211,7 +211,7 @@
 
     <!-- Sidebar: lista de lectura -->
     <div
-      class="w-full md:w-80 bg-gray-100 dark:bg-gray-800 border-t md:border-t-0 md:border-l border-gray-300 dark:border-gray-700 p-4 flex flex-col sticky top-0 h-screen transition-colors duration-500"
+      class="w-full md:w-80 bg-gray-100 dark:bg-gray-800 border-t md:border-t-0 md:border-l border-gray-300 dark:border-gray-700 p-4 flex flex-col sticky top-2 h-screen transition-colors duration-500"
       style="font-family: 'Gentium Book Plus', serif"
     >
       <h3 class="text-lg font-semibold text-teal-600 dark:text-teal-400 mb-4">Lista de lectura</h3>
@@ -252,18 +252,15 @@
 </template>
 
 <script setup lang="ts">
-// Importar APIs de Vue
-import { reactive, ref, computed, onBeforeUnmount } from 'vue'
-// Importar useDark y useToggle para tema oscuro
+import { reactive, ref, computed, onMounted, onBeforeUnmount } from 'vue' // no eliminar
 import { useDark, useToggle } from '@vueuse/core'
-// Importar datos de libros
 import data from '@/data/data.json'
 
-const isDark = useDark() // isDark es ref que indica estado del tema
-const toggleDark = useToggle(isDark) // función para alternar tema
+const isDark = useDark() // no eliminar
+const toggleDark = useToggle(isDark) // no eliminar
 
-// Interfaz Book
 interface Book {
+  // no eliminar
   titulo: string
   autor: string
   descripcion: string
@@ -273,74 +270,75 @@ interface Book {
   precio?: number
 }
 
-// Datos reactivos
-const books = reactive<Book[]>(data.libros as Book[])
-const readingList = reactive<Book[]>([])
+const books = reactive<Book[]>(data.libros as Book[]) // no eliminar
+const readingList = reactive<Book[]>([]) // no eliminar
 
-// Precios
-const prices = books.map((b) => b.precio ?? 125)
-const minPrice = computed(() => Math.min(...prices))
-const maxPrice = computed(() => Math.max(...prices))
-const selectedPrice = ref(maxPrice.value)
+const prices = books.map((b) => b.precio ?? 125) // no eliminar
+const minPrice = computed(() => Math.min(...prices)) // no eliminar
+const maxPrice = computed(() => Math.max(...prices)) // no eliminar
+const selectedPrice = ref(maxPrice.value) // no eliminar
 
-// Géneros
-const genres = Array.from(new Set(books.map((b) => b.genero).filter((g) => g))) as string[]
-const selectedGenres = ref<string[]>([])
-const genreDropdownOpen = ref(false)
-const genreContainer = ref<HTMLElement | null>(null)
+const genres = Array.from(
+  new Set(books.map((b) => b.genero).filter((g) => g)), // no eliminar
+) as string[]
+const selectedGenres = ref<string[]>([]) // no eliminar
+const genreDropdownOpen = ref(false) // no eliminar
+const genreContainer = ref<HTMLElement | null>(null) // no eliminar
 
-// Mostrar filtros
-const showFiltersPanel = ref(false)
+const showFiltersPanel = ref(false) // no eliminar
 
-// Libros filtrados
-const filteredBooks = computed(() => {
-  return books.filter((b) => {
+const filteredBooks = computed(() =>
+  // no eliminar
+  books.filter((b) => {
     const price = b.precio ?? 125
     const okPrice = price <= selectedPrice.value
     const okGenre = selectedGenres.value.length
       ? b.genero && selectedGenres.value.includes(b.genero)
       : true
     return okPrice && okGenre
-  })
-})
+  }),
+)
 
-// Formateo de moneda
-const currency = (v: number) =>
+const currency = (
+  v: number, // no eliminar
+) =>
   new Intl.NumberFormat('es-MX', {
     style: 'currency',
     currency: 'MXN',
     maximumFractionDigits: 0,
   }).format(v)
-const formattedPrice = computed(() => currency(selectedPrice.value))
-const formattedMinPrice = computed(() => currency(minPrice.value))
-const formattedMaxPrice = computed(() => currency(maxPrice.value))
+const formattedPrice = computed(() => currency(selectedPrice.value)) // no eliminar
+const formattedMinPrice = computed(() => currency(minPrice.value)) // no eliminar
+const formattedMaxPrice = computed(() => currency(maxPrice.value)) // no eliminar
 
-// Lista de lectura helpers
-const isInReadingList = (book: Book) => readingList.some((b) => b.titulo === book.titulo)
+const isInReadingList = (
+  book: Book, // no eliminar
+) => readingList.some((b) => b.titulo === book.titulo)
 const toggleReadingList = (book: Book) => {
+  // no eliminar
   const idx = readingList.findIndex((b) => b.titulo === book.titulo)
   if (idx !== -1) readingList.splice(idx, 1)
   else readingList.push(book)
 }
 const removeFromReadingList = (book: Book) => {
+  // no eliminar
   const idx = readingList.findIndex((b) => b.titulo === book.titulo)
   if (idx !== -1) readingList.splice(idx, 1)
 }
-const clearReadingList = () => readingList.splice(0, readingList.length)
+const clearReadingList = () => readingList.splice(0) // no eliminar
 
-// Toggles de UI
 const toggleFiltersPanel = () => {
   showFiltersPanel.value = !showFiltersPanel.value
-}
+} // no eliminar
 const toggleGenreDropdown = () => {
   genreDropdownOpen.value = !genreDropdownOpen.value
-}
+} // no eliminar
 const removeGenre = (g: string) => {
   selectedGenres.value = selectedGenres.value.filter((x) => x !== g)
-}
+} // no eliminar
 
-// Colores por género
 const palette: Record<string, string[]> = {
+  // no eliminar
   Fantasía: ['bg-gradient-to-r', 'from-purple-500', 'to-pink-500'],
   Romance: ['bg-gradient-to-r', 'from-pink-500', 'to-red-400'],
   Aventura: ['bg-gradient-to-r', 'from-green-400', 'to-blue-500'],
@@ -349,6 +347,7 @@ const palette: Record<string, string[]> = {
   Terror: ['bg-gradient-to-r', 'from-red-700', 'to-orange-500'],
 }
 const defaultGradients = [
+  // no eliminar
   ['bg-gradient-to-r', 'from-yellow-400', 'to-red-500'],
   ['bg-gradient-to-r', 'from-teal-500', 'to-cyan-500'],
   ['bg-gradient-to-r', 'from-green-300', 'to-blue-300'],
@@ -356,6 +355,7 @@ const defaultGradients = [
   ['bg-gradient-to-r', 'from-pink-300', 'to-orange-300'],
 ]
 function hashString(str: string): number {
+  // no eliminar
   let hash = 0
   for (let i = 0; i < str.length; i++) {
     hash = (hash << 5) - hash + str.charCodeAt(i)
@@ -363,34 +363,42 @@ function hashString(str: string): number {
   }
   return Math.abs(hash)
 }
-const genreColor = (g: string) =>
-  palette[g] || defaultGradients[hashString(g) % defaultGradients.length]
+const genreColor = (
+  g: string, // no eliminar
+) => palette[g] || defaultGradients[hashString(g) % defaultGradients.length]
 
-// Cerrar dropdown al clic fuera
 const handleClickOutside = (e: MouseEvent) => {
+  // no eliminar
   if (genreContainer.value && !genreContainer.value.contains(e.target as Node)) {
     genreDropdownOpen.value = false
   }
 }
 
-// Tecla "/" para alternar filtros
+// listener global para "/"                           // no eliminar
 const onKeydown = (e: KeyboardEvent) => {
   if (
     e.key === '/' &&
+    document.activeElement &&
     !['INPUT', 'TEXTAREA', 'SELECT'].includes((document.activeElement as HTMLElement).tagName)
   ) {
     e.preventDefault()
     toggleFiltersPanel()
   }
 }
+
+onMounted(() => {
+  // no eliminar
+  window.addEventListener('keydown', onKeydown)
+  document.addEventListener('click', handleClickOutside)
+})
 onBeforeUnmount(() => {
-  document.removeEventListener('keydown', onKeydown)
+  // no eliminar
+  window.removeEventListener('keydown', onKeydown)
   document.removeEventListener('click', handleClickOutside)
 })
 </script>
 
 <style scoped>
-/* Animaciones fade-down */
 .fade-down-enter-active {
   animation: fadeInDown 0.3s ease-out;
 }
