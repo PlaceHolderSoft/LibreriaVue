@@ -32,7 +32,6 @@ npm run dev
 
 ## 📚 Funcionalidades
 
-* 🔍 **Búsqueda**: Buscar libros por título o autor.
 * 🎚️ **Filtrado**: Filtrar resultados por **precio** y **género**.
 * ➕ **Lista de Lectura**: Agregar libros a una lista personal.
 * 🌗 **Cambio de Tema**: Alternar entre tema claro y oscuro.
